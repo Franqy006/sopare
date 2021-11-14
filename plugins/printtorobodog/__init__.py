@@ -16,6 +16,6 @@ while j<3:
 
 
 def run(readable_results, data, rawbuf):
-    conn.send('readable_results')
+    conn.send(readable_results)
     print "results sent to listener"
 
