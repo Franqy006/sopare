@@ -6,6 +6,5 @@
 *.wav
 *.png
 error.log
-plugins/*
 config/*
 
