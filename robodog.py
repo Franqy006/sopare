@@ -1,4 +1,12 @@
+from gpiozero import Motor
+from gpiozero import Robot
 from multiprocessing.connection import Listener
+import time
+# motor1 = Motor(23,4)
+# motor2 = Motor(16,20)
+robot = Robot(left=(20,16), right=(4, 23))
+
+
 
 class Switcher(object):
     def indirect(self,i):
@@ -6,8 +14,26 @@ class Switcher(object):
         print method_name
         method = getattr(self,method_name, lambda:"Invalid")
         method()
-    def stay(self):
-        print "got command to stay"
+    def forward(self):
+        robot.forward(1)
+        print 'forward'
+        time.sleep(2)
+        robot.stop()
+    def left(self):
+        robot.left(1)
+        print 'left'
+        time.sleep(0.5)
+        robot.stop()
+    def right(self):
+        robot.right(1)
+        print 'right'
+        time.sleep(0.5)
+        robot.stop()
+    def backward(self):
+        robot.backward(1)
+        print 'backwards'
+        time.sleep(2)
+        robot.stop()
     def error(self):
         print "error"
     def empty(self):
